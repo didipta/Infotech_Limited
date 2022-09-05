@@ -21,7 +21,7 @@
             </div>
         
             <div class="card-actions">
-                <button class="btn btn-primary mx-auto my-4">Details</button>
+                <a href="/cardetailes/{{$item->id}}"><button class="btn btn-primary mx-auto my-4">Details</button></a>
               </div>
         </div>
        

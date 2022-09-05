@@ -11,9 +11,9 @@
 <body>
     <header>
         <div tabindex="0" class="collapse border border-base-300 bg-base-100 rounded-box"> 
-            <div class="collapse-title text-xl font-medium">
+            <a href="/"><div class="collapse-title text-xl font-medium">
                 <h1>Workspace</h1>
-                <h1>Infotech</h1> 
+                <h1>Infotech</h1></a>
             </div>
           </div>
     </header>

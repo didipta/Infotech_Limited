@@ -18,3 +18,4 @@ use App\Http\Controllers\Carcontrolle;
 //     return view('car.carlist');
 // });
 Route::get('/', [Carcontrolle::class, 'index'])->name('/');
+Route::get('/cardetailes/{id}', [Carcontrolle::class,'show']);

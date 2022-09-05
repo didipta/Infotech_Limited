@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Car;
-
+use App\Models\Admin;
 use Illuminate\Http\Request;
 
-class Carcontrolle extends Controller
+class Admincontrolle extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class Carcontrolle extends Controller
      */
     public function index()
     {
-        $Cars=Car::all();
-        return view('car.carlist')->with("cars",$Cars);
+       $admin=Admin::all();
     }
 
     /**
@@ -25,7 +23,7 @@ class Carcontrolle extends Controller
      */
     public function create()
     {
-        return view("");
+        return view('');
     }
 
     /**
@@ -36,8 +34,8 @@ class Carcontrolle extends Controller
      */
     public function store(Request $request)
     {
-        $inputfild=$request->all();
-        Car::create($inputfild);
+      $input = $request->all();
+      Admin::create($input);
     }
 
     /**
@@ -48,8 +46,7 @@ class Carcontrolle extends Controller
      */
     public function show($id)
     {
-        $car=Car::find($id);
-        return view("car.Cardetails")->with("car",$car);
+        $admin=Admin::find($id);
     }
 
     /**
@@ -60,7 +57,7 @@ class Carcontrolle extends Controller
      */
     public function edit($id)
     {
-        $car=Car::find($id);
+        $admin=Admin::find($id);
     }
 
     /**
@@ -72,9 +69,9 @@ class Carcontrolle extends Controller
      */
     public function update(Request $request, $id)
     {
-        $car=Car::find($id);
+        $admin=Admin::find($id);
         $inputfild=$request->all();
-        Car::update($inputfild);
+        Admin::update($inputfild);
     }
 
     /**
@@ -85,6 +82,6 @@ class Carcontrolle extends Controller
      */
     public function destroy($id)
     {
-        Car::destroy($id);
+        Admin::destroy($id);
     }
 }
