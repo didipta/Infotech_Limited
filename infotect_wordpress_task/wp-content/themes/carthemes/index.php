@@ -19,36 +19,56 @@
             </div>
           </div>
     </header>
-    <div>
-        <?php 
+    <div class="text-center text-2xl py-7">
+    <h1>INVENTORY</h1>
+</div>
+<div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4  my-10 justify-items-center">
+<?php 
          $arg=array(
             'post_type'=>'Car',
              'post_per_page' =>8
          );
          $query=new WP_Query($arg);
+         
          while($query->have_posts())
          {
             $query->the_post();
+          
             $title= $post->post_title;
+            $postmeta=get_post_meta($post->ID);
+            $price="";
+            $vin="";
+            foreach ($postmeta as $key=>$val)
+            {
+              foreach($val as $vals)
+              {
+                if($key=="car_vin")
+                {
+                  $vin= $vals;
+                }
+                if($key="car_price")
+                {
+                  $price=$vals;
+                }
+                
+              }
+            }
+            
 
            
             ?>
-   <div class="text-center text-2xl py-7">
-    <h1>INVENTORY</h1>
-</div>
-<div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4  my-10 justify-items-center">
-    <div class="card w-96 bg-base-100 shadow-xl">
+    <div class="card w-96 bg-base-100 shadow-xl" style="height:450px">
         <figure class="px-10 pt-10">
-          <img src="" alt="Shoes" class="w-full" style="height:200px" />
+          <img src="<?php the_post_thumbnail_url();?>" alt="Shoes" class="w-full"  />
         </figure>
         <div class="card-body ">
             <div class="flex justify-between">
                 <div>
                     <h2 class="card-title m-2"><?php echo $title;?></h2>
-                    <p class="text-sm m-2">VIN- </p>
+                    <p class="text-sm m-2">VIN-<?php echo $vin;?> </p>
                 </div>
               <div class="m-2">
-                
+                <?php echo $price;?>
               </div>
             </div>
         
@@ -62,7 +82,7 @@
         <?php }
          ?>
          </div>
-    </div>
+          
 
         <footer class="footer footer-center items-center p-4 bg-neutral text-neutral-content">
             <div class="items-center grid-flow-col ">
